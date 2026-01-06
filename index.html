@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lia's Sweet Perfume | Premium Elegance</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* CSS Utama */
+        .hero {
+            background: linear-gradient(rgba(90, 24, 154, 0.3), rgba(255, 133, 161, 0.3)), 
+                        url('produk.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        /* Styling Harga */
+        .price-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #5a189a;
+            font-size: 1.3rem;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .order-btn-link {
+            display: inline-block;
+            background: #5a189a;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: 0.3s;
+            width: 85%;
+            text-align: center;
+        }
+
+        .order-btn-link:hover {
+            background: #ff85a1;
+            transform: scale(1.05);
+        }
+
+        /* Video Footer Latar Putih */
+        .video-footer-container {
+            width: 100%;
+            max-width: 900px; 
+            height: auto;
+            aspect-ratio: 16 / 9;
+            overflow: hidden;
+            position: relative;
+            margin: 60px auto; 
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); 
+            background-color: #ffffff;
+            border: 1px solid #f0f0f0;
+        }
+
+        .video-footer-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            .video-footer-container { width: 92%; }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="brand">LIA'S <span>Sweet Perfume</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#products">Collections</a></li>
+                <li><a href="checkout.html" style="color: #ff85a1; font-weight: bold;">Checkout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <span class="subtitle">Keanggunan Klasik & Kelembutan Romantis</span>
+                <h1>Sentuhan Aroma yang Tak Terlupakan</h1>
+                <p>Parfum lokal premium dengan karakter aroma sweet dan feminine yang dirancang khusus untuk wanita modern.</p>
+                <div class="hero-btns">
+                    <a href="#products" class="btn-primary">Lihat Koleksi</a>
+                    <a href="checkout.html" class="btn-secondary">Pesan Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="products" class="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Premium Collections</h2>
+                <p>Koleksi Spesial - Harga Flat Untuk Semua Varian</p>
+            </div>
+            
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="badge">Best Seller</div>
+                    <img src="sweet.jpeg" alt="Sweet Blossom">
+                    <div class="card-info">
+                        <h3>Sweet Blossom</h3>
+                        <p>Floral manis dengan sentuhan vanilla.</p>
+                        <span class="price-tag">Rp 99.000</span>
+                        <a href="checkout.html" class="order-btn-link">Pesan Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="berry.jpeg" alt="Berry Crush">
+                    <div class="card-info">
+                        <h3>Berry Crush</h3>
+                        <p>Raspberry dan strawberry yang segar.</p>
+                        <span class="price-tag">Rp 99.000</span>
+                        <a href="checkout.html" class="order-btn-link">Pesan Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="rose.jpeg" alt="Rose Garden">
+                    <div class="card-info">
+                        <h3>Rose Garden</h3>
+                        <p>Elegant rose dengan sweet musk.</p>
+                        <span class="price-tag">Rp 99.000</span>
+                        <a href="checkout.html" class="order-btn-link">Pesan Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="citrus.jpeg" alt="Citrus Delight">
+                    <div class="card-info">
+                        <h3>Citrus Delight</h3>
+                        <p>Fresh citrus dengan sweet undertone.</p>
+                        <span class="price-tag">Rp 99.000</span>
+                        <a href="checkout.html" class="order-btn-link">Pesan Sekarang</a>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <img src="sakura.jpeg" alt="Sakura">
+                    <div class="card-info">
+                        <h3>Pink Sakura</h3>
+                        <p>Aroma khas musim semi yang menenangkan.</p>
+                        <span class="price-tag">Rp 99.000</span>
+                        <a href="checkout.html" class="order-btn-link">Pesan Sekarang</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="video-footer-container">
+        <video autoplay muted loop playsinline>
+            <source src="video.mp4" type="video/mp4">
+            Browser Anda tidak mendukung tag video.
+        </video>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">LIA'S SWEET PERFUME</div>
+                <p>Tersedia di Shopee, Tokopedia, & Instagram.</p>
+                <div class="social-links">
+                    <span>IG: @lias.sweetperfume</span> | <span>TikTok: @lias.perfume</span>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Lia's Sweet Perfume. Managed by Novelia.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

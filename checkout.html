@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Lia's Sweet Perfume</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        .checkout-section { padding: 100px 5% 60px; background: #fdf2f8; min-height: 100vh; }
+        .checkout-container { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 700px; margin: 0 auto; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { margin-bottom: 20px; }
+        .full-width { grid-column: span 2; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; color: #5a189a; font-size: 14px; }
+        .form-group select, .form-group input, .form-group textarea { 
+            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family: 'Montserrat', sans-serif; outline: none;
+        }
+        .form-group select:focus, .form-group input:focus { border-color: #ff85a1; }
+        .total-display { font-size: 22px; font-weight: bold; color: #ff85a1; margin: 25px 0; text-align: center; border-top: 2px dashed #eee; padding-top: 20px; }
+        .btn-checkout { background: #25d366; color: white; border: none; padding: 18px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .btn-checkout:hover { background: #128c7e; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); }
+        
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .full-width { grid-column: span 1; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="brand">LIA'S <span>Sweet Perfume</span></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Kembali ke Beranda</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="checkout-section">
+        <div class="checkout-container">
+            <h2 style="text-align: center; font-family: 'Playfair Display'; color: #5a189a; margin-bottom: 5px;">Konfirmasi Pesanan</h2>
+            <p style="text-align: center; margin-bottom: 35px; color: #666; font-size: 14px;">Lengkapi data pengiriman untuk semua varian (Flat Rp 99.000)</p>
+            
+            <form id="orderForm">
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Nama Lengkap Penerima</label>
+                        <input type="text" id="nama" placeholder="Contoh: Novelia" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Varian Aroma</label>
+                        <select id="varian" required>
+                            <option value="Sweet Blossom">Sweet Blossom</option>
+                            <option value="Berry Crush">Berry Crush</option>
+                            <option value="Rose Garden">Rose Garden</option>
+                            <option value="Citrus Delight">Citrus Delight</option>
+                            <option value="Pink Sakura">Pink Sakura (Musim Semi)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Jumlah (Botol)</label>
+                        <input type="number" id="jumlah" value="1" min="1" oninput="hitungTotal()" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Metode Pembayaran</label>
+                        <select id="metode_bayar" required>
+                            <option value="Transfer Bank (BCA)">Transfer BCA</option>
+                            <option value="E-Wallet (Dana/OVO/GoPay)">E-Wallet (Dana/OVO/GoPay)</option>
+                            <option value="QRIS">QRIS</option>
+                            <option value="COD">Bayar di Tempat (COD)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Alamat Lengkap Pengiriman</label>
+                        <textarea id="alamat" rows="3" placeholder="Nama jalan, nomor rumah, kec, kota..." required></textarea>
+                    </div>
+                </div>
+
+                <div class="total-display">
+                    Total Bayar: Rp <span id="displayTotal">99.000</span>
+                </div>
+
+                <button type="button" class="btn-checkout" onclick="kirimWhatsApp()">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" width="22" alt="WA">
+                    Konfirmasi via WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // Harga disesuaikan menjadi 99.000 sesuai permintaan halaman utama
+        const HARGA_PER_BOTOL = 99000; 
+
+        function hitungTotal() {
+            const inputJumlah = document.getElementById('jumlah');
+            let jumlah = parseInt(inputJumlah.value);
+            
+            // Validasi agar jumlah tidak kosong atau nol
+            if (isNaN(jumlah) || jumlah < 1) {
+                jumlah = 0;
+            }
+            
+            const total = jumlah * HARGA_PER_BOTOL;
+            
+            // Format angka ke Rupiah (Titik ribuan)
+            document.getElementById('displayTotal').innerText = total.toLocaleString('id-ID');
+        }
+
+        function kirimWhatsApp() {
+            const nama = document.getElementById('nama').value;
+            const varian = document.getElementById('varian').value;
+            const jumlah = document.getElementById('jumlah').value;
+            const alamat = document.getElementById('alamat').value;
+            const metode = document.getElementById('metode_bayar').value;
+            const total = (jumlah * HARGA_PER_BOTOL).toLocaleString('id-ID');
+            
+            if(!nama || !alamat || jumlah < 1) {
+                alert("Mohon lengkapi Nama, Alamat, dan Jumlah pesanan.");
+                return;
+            }
+
+            const noWA = "6281268038431"; 
+            
+            const pesan = `*ORDER LIA'S SWEET PERFUME*%0A` +
+                          `----------------------------------%0A` +
+                          `*Nama :* ${nama}%0A` +
+                          `*Varian :* ${varian}%0A` +
+                          `*Jumlah :* ${jumlah} Botol%0A` +
+                          `*Alamat :* ${alamat}%0A` +
+                          `*Metode :* ${metode}%0A` +
+                          `----------------------------------%0A` +
+                          `*TOTAL TAGIHAN :* Rp ${total}%0A%0A` +
+                          `Halo Kak Novelia, saya sudah mengisi form di website. Mohon instruksi selanjutnya. Terima kasih!`;
+
+            window.open(`https://wa.me/${noWA}?text=${pesan}`, '_blank');
+        }
+    </script>
+
+</body>
+</html>
